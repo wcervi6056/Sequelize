@@ -1,0 +1,12 @@
+body {
+    text-align: center;
+}
+#halls {
+    margin: auto;
+}
+h1 {
+    background-color: cornflowerblue;
+    border-radius: 10px;
+    border: 10px;
+    color: white;
+}
