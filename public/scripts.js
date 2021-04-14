@@ -15,5 +15,32 @@ async function dininghalls() {
   }
   document.getElementById('halls').innerHTML += t;
 }
+async function getMeals() {
+  const request = await fetch('/api/meals');
+  const ids = await fetch('/api/macros/:meal_id');
+  const data = await request.json();
+  const idList = await ids.json();
+  console.log(data);
+  let chart = new CanvasJS.Chart("chartContainer", {
+    title: {
+      text: "Meals"
+    },
+    data: [{
+      type: "stackedBar",
+		  showInLegend: "true",
+      dataPoints: holder
+    }]
 
-window.onload = dininghalls;
+  });
+  for (let i = 0; i < 10; i++) {
+    chart.data.concat(data[Math.getRandomIntInclusive(data.length)]);
+  }
+  
+
+  chart.render();
+}
+
+window.onload = function () {
+  diningHalls;
+  getMeals;
+}
